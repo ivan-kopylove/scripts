@@ -12,6 +12,8 @@ Set sourcefile="%%a"
 Set outputfile="%%a"
 echo !sourcefile!
 echo !outputfile!
-tesseract !sourcefile! !outputfile! -l rus
+tesseract !sourcefile! !outputfile!_kw_rus -l rus
+tesseract !sourcefile! !outputfile!_kw_eng -l eng
+tesseract !sourcefile! !outputfile!_kw_deu -l deu
 )
 @PAUSE
