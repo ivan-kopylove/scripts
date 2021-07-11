@@ -33,7 +33,12 @@ Get-appxpackage -allusers *Twitter* | Remove-AppxPackage -allusers
 Get-appxprovisionedpackage –online | where-object {$_.packagename –like '*Twitter*'} | remove-appxprovisionedpackage –online
 
 
-
+# Create this registry key with PowerShell code below which should stop the suggested apps on the start menu:
+If ('HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager')
+{
+    $Suggestions = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager'
+    Set-ItemProperty $Suggestions -Name SystemPaneSuggestionsEnabled -Value 0 Verbose
+}
             
 
 [Console]::ReadKey()
