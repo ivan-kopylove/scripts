@@ -1,0 +1,1 @@
+schtasks /create /sc MINUTE /mo 5 /tn "kopia_7046edf2" /tr kopia_7046edf2.bat
