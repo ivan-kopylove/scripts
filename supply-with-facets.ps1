@@ -4,15 +4,15 @@
 
 param([string]$folder, [string]$facet)
 
-Write-Host $dest
+Write-Host "Destination is: " $dest
 
-$files = Get-ChildItem -Recurse $folder | Where-Object {$_.PSIsContainer}
+$folders = Get-ChildItem -Recurse $folder | Where-Object {$_.PSIsContainer}
 
-foreach($file in $files)
+foreach($folder in $folders)
 {	
-	Write-Host "Processing: " $file
+	Write-Host "Processing: " $folder
 	
-	$dir = [io.path]::GetFileName("$file")
+	$dir = [io.path]::GetFileName("$folder")
 	$facetVar = $("$folder/$dir/$facet")
 	$folderid = $("$folder/$dir/$dir.folder-id")
 	$nomedia = $("$folder/$dir/.nomedia")
